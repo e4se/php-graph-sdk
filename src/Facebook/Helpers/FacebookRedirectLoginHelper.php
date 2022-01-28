@@ -328,6 +328,8 @@ class FacebookRedirectLoginHelper
      */
     private function getInput($key)
     {
+        logger()->error('test');
+        logger()->error(request()->all());
         return request()->$key;
     }
 }
