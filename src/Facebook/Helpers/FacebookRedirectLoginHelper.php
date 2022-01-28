@@ -328,7 +328,6 @@ class FacebookRedirectLoginHelper
      */
     private function getInput($key)
     {
-        logger()->error($_GET);
-        return isset($_GET[$key]) ? $_GET[$key] : null;
+        return request()->$key;
     }
 }
