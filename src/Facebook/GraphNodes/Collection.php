@@ -162,16 +162,17 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate
      *
      * @return int
      */
-    public function count()
+    public function count(): int
     {
         return count($this->items);
     }
 
     /**
-     * Get an iterator for the items.
+     * Получение итератора
      *
-     * @return ArrayIterator
+     * @return \Traversable
      */
+    #[\ReturnTypeWillChange]
     public function getIterator()
     {
         return new ArrayIterator($this->items);
@@ -184,7 +185,7 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate
      *
      * @return bool
      */
-    public function offsetExists($key)
+    public function offsetExists($key): bool
     {
         return array_key_exists($key, $this->items);
     }
@@ -209,7 +210,7 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate
      *
      * @return void
      */
-    public function offsetSet($key, $value)
+    public function offsetSet($key, $value):void
     {
         if (is_null($key)) {
             $this->items[] = $value;
@@ -225,7 +226,7 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate
      *
      * @return void
      */
-    public function offsetUnset($key)
+    public function offsetUnset($key):void
     {
         unset($this->items[$key]);
     }
